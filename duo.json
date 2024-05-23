@@ -1,0 +1,20 @@
+{
+  "urls": [
+    {
+      "url": "https://hub.gitmirror.com/https://raw.githubusercontent.com/PizazzGY/TVBox/main/api.json",
+      "name": "🚀PizazzGY/TVBox"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/0821.json",
+      "name": "🚀qist/tvbox"
+    },
+    {
+      "url": "http://www.饭太硬.top/tv",
+      "name": "🚀饭太硬"
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/SuperTreasure/TVbox@master/api.json",
+      "name": "🚀Ezong"
+    }
+  ]
+}
