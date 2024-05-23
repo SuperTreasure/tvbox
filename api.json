@@ -4,7 +4,7 @@
       "key": "py_douyu",
       "name": "斗鱼",
       "type": 3,
-      "api": "https://raw.gitcode.com/SuperTreasure/TVbox/raw/master/plugin/py_douyu.py",
+      "api": "./plugin/py_douyu.py",
       "searchable": 1,
       "quickSearch": 0,
       "filterable": 1,
