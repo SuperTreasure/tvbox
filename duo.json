@@ -5,7 +5,7 @@
       "name": "🚀PizazzGY/TVBox"
     },
     {
-      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/0821.json",
+      "url": "https://ghproxy.cc/https://raw.githubusercontent.com/qist/tvbox/master/0821.json",
       "name": "🚀qist/tvbox"
     },
     {
@@ -13,7 +13,7 @@
       "name": "🚀饭太硬"
     },
     {
-      "url": "https://cdn.jsdelivr.net/gh/SuperTreasure/tvbox@master/api.json",
+      "url": "https://ghproxy.cc/https://raw.githubusercontent.com/SuperTreasure/tvbox/master/api.json",
       "name": "🚀Ezong"
     }
   ]
