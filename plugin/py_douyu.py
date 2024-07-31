@@ -24,6 +24,9 @@ class Spider(Spider):
     def manualVideoCheck(self):
         pass
 
+    def destroy(self):
+        pass
+
     def homeContent(self, filter):
         result = {}
         cateManual = {"热门游戏": "热门游戏", "主机游戏": "主机游戏", "原创IP": "原创IP"}
@@ -52,8 +55,8 @@ class Spider(Spider):
         for vod in vodList:
             aid = (vod['roomId']).strip()
             title = vod['roomName'].strip()
-            # img = vod['roomPic'].strip()
-            img = vod['ownerHeadPic'].strip()
+            img = vod['roomPic'].strip()
+            # img = vod['ownerHeadPic'].strip()
             remark = (vod['ownerName']).strip()
             videos.append({"vod_id": aid, "vod_name": title, "vod_pic": img, "vod_remarks": remark})
         result['list'] = videos
@@ -95,6 +98,9 @@ class Spider(Spider):
         return result
 
     def searchContent(self, key, quick):
+        return self.searchContentPage(key, quick, 1)
+
+    def searchContentPage(self, key, quick, pg):
         result = {}
         url = "http://live.yj1211.work/api/live/search?platform=douyu&keyWords={0}&uid=5774c214491e41418d18f5438855668c".format(
             key)
