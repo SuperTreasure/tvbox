@@ -1,7 +1,7 @@
-#coding=utf-8
-#!/usr/bin/python
 import re
+import os
 import json
+import time
 import requests
 from lxml import etree
 from abc import abstractmethod, ABCMeta
@@ -43,6 +43,10 @@ class Spider(metaclass=ABCMeta):
         pass
 
     @abstractmethod
+    def searchContentPage(self, key, quick, pg):
+        pass
+
+    @abstractmethod
     def playerContent(self, flag, id, vipFlags):
         pass
 
@@ -62,51 +66,75 @@ class Spider(metaclass=ABCMeta):
     def getName(self):
         pass
 
+    @abstractmethod
+    def destroy(self):
+        pass
+
     def getDependence(self):
         return []
 
-    def regStr(self, src, reg, group=1):
+    def loadSpider(self, name):
+        return self.loadModule(name).Spider()
+
+    def regStr(self, reg, src, group=1):
         m = re.search(reg, src)
         src = ''
         if m:
             src = m.group(group)
         return src
 
-    def str2json(self, str):
-        return json.loads(str)
+    def removeHtmlTags(self, src):
+        clean = re.compile('<.*?>')
+        return re.sub(clean, '', src)
 
     def cleanText(self, src):
         clean = re.sub('[\U0001F600-\U0001F64F\U0001F300-\U0001F5FF\U0001F680-\U0001F6FF\U0001F1E0-\U0001F1FF]', '',
                        src)
         return clean
 
-    def fetch(self, url, headers={}, cookies=""):
-        rsp = requests.get(url, headers=headers, cookies=cookies)
+    def fetch(self,
+              url,
+              params=None,
+              cookies=None,
+              headers=None,
+              timeout=5,
+              verify=True,
+              stream=False,
+              allow_redirects=True):
+        rsp = requests.get(url,
+                           params=params,
+                           cookies=cookies,
+                           headers=headers,
+                           timeout=timeout,
+                           verify=verify,
+                           stream=stream,
+                           allow_redirects=allow_redirects)
         rsp.encoding = 'utf-8'
         return rsp
 
-    def post(self, url, data, headers={}, cookies={}):
-        rsp = requests.post(url, data=data, headers=headers, cookies=cookies)
-        rsp.encoding = 'utf-8'
-        return rsp
-
-    def postJson(self, url, json, headers={}, cookies={}):
-        rsp = requests.post(url, json=json, headers=headers, cookies=cookies)
+    def post(self,
+             url,
+             params=None,
+             data=None,
+             json=None,
+             cookies=None,
+             headers=None,
+             timeout=5,
+             verify=True,
+             stream=False,
+             allow_redirects=True):
+        rsp = requests.post(url,
+                            params=params,
+                            data=data,
+                            json=json,
+                            cookies=cookies,
+                            headers=headers,
+                            timeout=timeout,
+                            verify=verify,
+                            stream=stream,
+                            allow_redirects=allow_redirects)
         rsp.encoding = 'utf-8'
         return rsp
 
     def html(self, content):
         return etree.HTML(content)
-
-    def xpText(self, root, expr):
-        ele = root.xpath(expr)
-        if len(ele) == 0:
-            return ''
-        else:
-            return ele[0]
-
-    def loadModule(self, name, fileName):
-        return SourceFileLoader(name, fileName).load_module()
-
-    def test(self):
-        print('please override the test function')
