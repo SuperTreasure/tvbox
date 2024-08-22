@@ -1,10 +1,10 @@
 {
   "sites": [
     {
-      "key": "py_douyu",
-      "name": "斗鱼",
+      "key": "py_justLive",
+      "name": "justLive",
       "type": 3,
-      "api": "./plugin/py_douyu.py",
+      "api": "./plugin/py_justLive.py",
       "searchable": 1,
       "playerType": 1,
       "changeable": 0,
