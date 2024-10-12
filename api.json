@@ -1,10 +1,25 @@
 {
+  "spider": "https://ghproxy.cc/https://raw.githubusercontent.com/SuperTreasure/tvbox/master/jar/custom_spider.jar;md5;13c9d9596894051bb29b2e586fa81acf",
   "sites": [
+    {
+      "key": "douyu",
+      "name": "斗鱼",
+      "type": 3,
+      "api": "csp_Douyu",
+      "searchable": 1,
+      "playerType": 1,
+      "changeable": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.755
+      },
+      "ext": ""
+    },
     {
       "key": "py_justLive",
       "name": "justLive",
       "type": 3,
-      "api": "./plugin/py_justLive.py",
+      "api": "./py/plugin/py_justLive.py",
       "searchable": 1,
       "playerType": 1,
       "changeable": 0,
